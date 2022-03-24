@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin info</title>
+</head>
+<body>
+<h3>Admin info</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Password</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.password}"></td>
+    </tr>
+    </tbody>
+    <br>
+    <a href="/api/v1/admin/users">Users Info</a>
+</table>
+<br>
+<p><a href="/logout">Logout</a></p>
+</body>
+</html>

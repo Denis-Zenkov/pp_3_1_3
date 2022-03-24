@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create user</title>
+</head>
+<body>
+<form th:action="@{/api/v1/admin/users/create}" th:object="${user}" method="post">
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <label for="surname">surname</label>
+    <input type="text" th:field="*{surname}" id="surname" placeholder="surname">
+    <label for="age">age</label>
+    <input type="text" th:field="*{age}" id="age" placeholder="age">
+    <label for="password">password</label>
+    <input type="password" th:field="*{password}" id="password" placeholder="password">
+    <input type="submit" value="Create User">
+</form>
+
+<br>
+<p><a href="/logout">Logout</a></p>
+</body>
+</html>
