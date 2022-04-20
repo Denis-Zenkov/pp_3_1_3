@@ -5,6 +5,13 @@
     <title>User info</title>
 </head>
 <body>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3" href="#">
+        <b th:utext="${user.getEmail()}"></b>
+        <lable>with roles:</lable>
+        <lable th:text="${user.getAuthorities()}"></lable>
+    </a>
+</header>
 <h3>User info</h3>
 <table>
     <thead>
@@ -12,7 +19,8 @@
         <th>Id</th>
         <th>Name</th>
         <th>Surname</th>
-        <th>Age</th>
+        <th>Email</th>
+        <th>Password</th>
     </tr>
     </thead>
     <tbody>
@@ -20,7 +28,7 @@
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
         <td th:text="${user.surname}"></td>
-        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
         <td th:text="${user.password}"></td>
     </tr>
     </tbody>

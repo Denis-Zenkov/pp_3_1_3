@@ -5,6 +5,8 @@ import com.example.pp_3_1_2_spring_securirty_1.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -12,12 +14,12 @@ public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 
     @Override
-    public void deleteById(Long id) {
-        roleRepository.deleteById(id);
+    public Role findByName(String name) {
+        return roleRepository.findByName(name);
     }
 
     @Override
-    public Role findByName(String name) {
-        return roleRepository.findByName(name);
+    public List<Role> getAllRole() {
+        return roleRepository.findAll();
     }
 }

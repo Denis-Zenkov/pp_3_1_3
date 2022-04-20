@@ -20,7 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 
 @Controller
-@RequestMapping("/api/v1/admin/users")
+@RequestMapping("/admin/users")
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminController {
     private final UserService userService;
@@ -42,14 +42,13 @@ public class AdminController {
     @PostMapping("/create")
     public String createUser(User user){
         userService.addUser(user);
-        return "redirect:/api/v1/admin/users";
+        return "redirect:/admin";
     }
 
-    @GetMapping("/delete{id}")
-    public String deleteUser(@PathVariable("id") Long id){
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id){
         userService.deleteById(id);
-//        roleService.deleteById(id);
-        return "redirect:/api/v1/admin/users";
+        return "redirect:/admin";
     }
 
     @GetMapping("/update/{id}")
@@ -62,7 +61,8 @@ public class AdminController {
         }
 
         UserDto userDto = new UserDto(user.getId(), user.getName(),
-                user.getSurname(), user.getPassword(), user.getAge(), strRoles);
+                user.getSurname(), user.getEmail(), user.getPassword(), strRoles);
+
 
         model.addAttribute("user", userDto);
         return "user-update";
@@ -83,8 +83,8 @@ public class AdminController {
         }
 
         User user = new User(userDto.getId(), userDto.getName(), userDto.getSurname(),
-                userDto.getAge(), userDto.getPassword(), roles);
+                userDto.getEmail(), userDto.getPassword(), roles);
         userService.updateUser(user);
-        return "redirect:/api/v1/admin/users";
+        return "redirect:/admin";
     }
 }

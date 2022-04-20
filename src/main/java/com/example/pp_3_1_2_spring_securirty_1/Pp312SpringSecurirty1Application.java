@@ -1,5 +1,6 @@
 package com.example.pp_3_1_2_spring_securirty_1;
 
+import com.example.pp_3_1_2_spring_securirty_1.model.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

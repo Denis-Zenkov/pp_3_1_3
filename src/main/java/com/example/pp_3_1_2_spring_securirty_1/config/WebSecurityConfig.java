@@ -21,22 +21,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
     private final PasswordEncoder passwordEncoder;
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                    .antMatchers("/", "/index")
-//                    .permitAll()
-//                    .anyRequest()
-//                    .authenticated()
-//                .and()
-//                    .formLogin()
-//                    .successHandler(successUserHandler)
-//                    .permitAll()
-//                .and()
-//                    .logout()
-//                    .permitAll();
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,8 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .successHandler(successUserHandler)
-                .usernameParameter("j_username")
-                .passwordParameter("j_password")
+                .usernameParameter("name")
+                .passwordParameter("password")
                 .and().logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");

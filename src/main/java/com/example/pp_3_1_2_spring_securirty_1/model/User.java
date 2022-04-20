@@ -1,5 +1,8 @@
 package com.example.pp_3_1_2_spring_securirty_1.model;
 
+import com.example.pp_3_1_2_spring_securirty_1.dto.UserDto;
+import com.example.pp_3_1_2_spring_securirty_1.service.UserService;
+import com.example.pp_3_1_2_spring_securirty_1.service.UserServiceImpl;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +23,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,8 +34,8 @@ public class User implements UserDetails {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "password")
     private String password;
@@ -42,6 +46,7 @@ public class User implements UserDetails {
                joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
